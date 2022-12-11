@@ -18,5 +18,21 @@ void test_validate_my_username()
      * TODO: Replace the line below with your code here as described above to verify your /conf/username.txt 
      * config file and my_username() functions are setup properly
      */
-    TEST_ASSERT_TRUE_MESSAGE(false,"AESD students, please fix me!");
+
+   //30 char buffer is >> username
+   char uname_hardcode[30];
+   char uname_from_file[30];
+   int str_test;
+
+   strcpy(uname_hardcode, my_username());
+   strcpy(uname_from_file, malloc_username_from_conf_file());
+   str_test = strcmp(uname_hardcode, uname_from_file);
+
+   printf("%s", "Hardcode: ");
+   printf("%s\n", uname_hardcode);
+   printf("%s", "File: ");
+   printf("%s\n", uname_from_file);
+   
+
+    TEST_ASSERT_TRUE_MESSAGE(str_test == 0,"Username Verified");
 }
